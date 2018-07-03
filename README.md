@@ -15,4 +15,4 @@ admin@freshjones.com
 welcome
 
 
-Laravel 5.6 content management system proof of concept with Vue.js administrative admin features.
+Laravel 5.6 content management system proof of concept with Vue.js administrative features.
