@@ -30,3 +30,6 @@ Highlights:
 [Abstract Controllers with Repo and Helper Services](https://github.com/freshjones/freshcms/blob/bf27c519b25b6b870614ac8d855d0c7ddd9c23d4/app/Http/Controllers/Content/BaseContentController.php#L14)
 
 [Reusable Traits](https://github.com/freshjones/freshcms/blob/d999f4b811b61848d5a5a75e15ada0caf8f50d7d/app/Traits/RendersPageView.php#L7)
+
+[Repository Pattern with Contracts](https://github.com/freshjones/freshcms/blob/8d0fa2987c92f554004ffbf8e176a0ff72f71f92/app/Repositories/Contracts/PageRepositoryInterface.php#L4)
+
