@@ -48235,7 +48235,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -49949,43 +49948,7 @@ var render = function() {
                                     },
                                     [_vm._v(_vm._s(section.label))]
                                   )
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    staticClass:
-                                      "small text-uppercase text-muted m-0 p-0"
-                                  },
-                                  [
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "font-weight-bold text-dark"
-                                      },
-                                      [_vm._v("Id:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "font-weight-bold text-dark"
-                                      },
-                                      [_vm._v("Type:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "font-weight-bold text-dark"
-                                      },
-                                      [_vm._v("Display:")]
-                                    )
-                                  ]
-                                )
+                                ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: " " }, [
