@@ -26,13 +26,13 @@ class HomeController extends Controller
         $vars = Variables::where('name','template')->orWhere('name', 'front')->get();
         $variables = array();
 
-        if(empty($variables))
-            return view("themes.empty");
-
         collect($vars)->each(function($item) use (&$variables){
             $variables[$item->name] = $item->value;
         });
         
+        if(empty($variables))
+            return view("themes.empty");
+
         //if we have a homepage
         if($variables['front'] != 'default')
             return $this->renderPageBySlug($variables['front']);
