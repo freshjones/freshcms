@@ -21,4 +21,6 @@ Highlights:
 
 [Simple Vue Data Store for sharing data between components](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/app.js#L5)
 
+[Placeholder content while data loads via axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L3)
+
 
