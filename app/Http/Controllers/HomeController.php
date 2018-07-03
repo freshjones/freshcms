@@ -25,6 +25,10 @@ class HomeController extends Controller
         //get the proper template
         $vars = Variables::where('name','template')->orWhere('name', 'front')->get();
         $variables = array();
+
+        if(empty($variables))
+            return view("themes.empty");
+
         collect($vars)->each(function($item) use (&$variables){
             $variables[$item->name] = $item->value;
         });

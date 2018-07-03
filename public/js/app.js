@@ -14763,7 +14763,7 @@ __webpack_require__(18);
 
 window.Vue = __webpack_require__(41);
 
-//authentication:{},
+//Simple DataStore
 window.Store = {
   state: {
     sections: [],

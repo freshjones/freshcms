@@ -2,7 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-//authentication:{},
+//Simple DataStore
 window.Store = {
   state: {
     sections: [],
