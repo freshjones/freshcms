@@ -37,4 +37,6 @@ Highlights:
 
 [Service Helper Classes with Laravel Collections](https://github.com/freshjones/freshcms/blob/0739b8a979ff407ab3d7861359a80e1a4f0e04f7/app/Services/Sections/SectionService.php#L7)
 
+[Extended views with Bootstrap theming](https://github.com/freshjones/freshcms/blob/ed308587bbe2ccce0f56632197054e4474641d9b/resources/views/admin/section/content/edit.blade.php#L1)
+
 
