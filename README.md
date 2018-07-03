@@ -33,6 +33,6 @@ Highlights:
 
 [Repository Pattern with Contracts](https://github.com/freshjones/freshcms/blob/8d0fa2987c92f554004ffbf8e176a0ff72f71f92/app/Repositories/Contracts/PageRepositoryInterface.php#L4)
 
-[Models with Relationships and KeyBinding Override](https://github.com/freshjones/freshcms/blob/b9d0627cd2560ed322f0cfe70fb75068b5e12866/app/Page.php#L5)
+[Models with Relationships and KeyName Override](https://github.com/freshjones/freshcms/blob/b9d0627cd2560ed322f0cfe70fb75068b5e12866/app/Page.php#L5)
 
 
