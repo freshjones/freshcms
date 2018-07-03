@@ -35,4 +35,6 @@ Highlights:
 
 [Models with Relationships and KeyName Override](https://github.com/freshjones/freshcms/blob/b9d0627cd2560ed322f0cfe70fb75068b5e12866/app/Page.php#L5)
 
+[Service Helper Classes](https://github.com/freshjones/freshcms/blob/0739b8a979ff407ab3d7861359a80e1a4f0e04f7/app/Services/Sections/SectionService.php#L7)
+
 
