@@ -9,12 +9,12 @@
           <input type="hidden" name="lang" value="en">
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Enter a Title" value="{{ old('title', $page->title) }}">
+            <input type="text" name="title" class="form-control" placeholder="Enter a Title" value="{{ old('title', $page->title) }}" required />
             <small id="titleHelp" class="form-text text-muted">Enter a title for your page</small>
           </div>
           <div class="form-group">
             <label for="slug">URL</label>
-            <input type="text" name="slug" class="form-control" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}">
+            <input type="text" name="slug" class="form-control" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}" required />
             <small id="slugHelp" class="form-text text-muted">Enter a URL for this page</small>
           </div>
           <div class="form-group">
@@ -57,33 +57,6 @@
               <div class="row mt-2">
                 <div class="col">
                   <Sections :page="{{ $page->id }}" />
-                  {{--
-                  <form method="POST" action="{{ route('sort-update', $page->slug) }}">
-                    <input name="_method" type="hidden" value="PATCH">
-                    @csrf
-                    @foreach ($contents as $id => $content)
-                    <div class="border my-2 px-3 py-2 rounded" draggable="true">
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <h3 class="m-0"><a href="/">{{ isset($content['label']) ? $content['label'] : 'Label' }}</a></h3>
-                          <p class="small text-uppercase text-muted m-0 p-0"><span class="font-weight-bold text-dark">Id:</span> {{ isset($content['id']) ? $content['id'] : '' }} <span class="font-weight-bold text-dark">Type:</span> {{ isset($content['type']) ? $content['type'] : '' }} <span class="font-weight-bold text-dark">Display:</span> {{ isset($content['status']) ? $content['status'] : '' }}</p>
-                        </div>
-                        <div class="col-md-2 d-flex">
-                            <div class="mx-1">
-                              <a href="{{ route('section-edit', [$page->id, $id, $content['type']]) }}" role="button" class="btn btn-primary">Edit</a>
-                            </div>
-                            <div class="mx-1">
-                              <input type="text" name="order-{{ $id }}" value="{{ isset($content['order']) ? $content['order'] : 0 }}" class="form-control text-center" />
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    @endforeach
-                    <div class="my-2 px-3 py-2 d-flex justify-content-end" draggable="true">
-                      <button type="submit" class="btn btn-secondary">Update</button>
-                    </div>
-                  </form>
-                  --}}
                 </div>
               </div>
             </div>

@@ -1,12 +1,12 @@
 <input type="hidden" name="lang" value="en">
 <div class="form-group">
   <label for="title">Title</label>
-  <input type="text" name="title" class="form-control" placeholder="Enter a Title" value="{{ old('title', $page->title) }}">
+  <input type="text" name="title" class="form-control" placeholder="Enter a Title" value="{{ old('title', $page->title) }}" required />
   <small id="titleHelp" class="form-text text-muted">Enter a title for your page</small>
 </div>
 <div class="form-group">
   <label for="slug">URL</label>
-  <input type="text" name="slug" class="form-control" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}">
+  <input type="text" name="slug" class="form-control" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}" required />
   <small id="slugHelp" class="form-text text-muted">Enter a URL for this page</small>
 </div>
 <div class="form-group">
