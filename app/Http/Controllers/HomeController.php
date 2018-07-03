@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Traits\RendersPageView;
 use App\Repositories\PageRepository as Repository;
 /* models */
 use App\Variables;
 
 class HomeController extends Controller
 {
+    use RendersPageView;
+
     private $repo;
 
     public function __construct(Repository $repo)
@@ -20,12 +23,20 @@ class HomeController extends Controller
     public function index()
     {
         //get the proper template
-        $template = Variables::where('name','template')->first();
+        $vars = Variables::where('name','template')->orWhere('name', 'front')->get();
+        $variables = array();
+        collect($vars)->each(function($item) use (&$variables){
+            $variables[$item->name] = $item->value;
+        });
+        
+        //if we have a homepage
+        if($variables['front'] != 'default')
+            return $this->renderPageBySlug($variables['front']);
 
         //get all pages
         $pages = $this->repo->all();
         
         //return the view
-        return view("themes.{$template->value}.home", ['pages' => $pages]);
+        return view("themes.{$variables['template']}.home", ['pages' => $pages]);
     }
 }
