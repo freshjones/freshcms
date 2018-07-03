@@ -25,5 +25,6 @@ Highlights:
 
 [Dynamically sort and save content via axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L66)
 
+[Simple Concrete Controllers](https://github.com/freshjones/freshcms/blob/4a94f9e4fb9114a83c6767884de3e0c1619c1d80/app/Http/Controllers/Content/BillboardController.php#L12)
 
-[OOP Controlleters](https://github.com/freshjones/freshcms/blob/4a94f9e4fb9114a83c6767884de3e0c1619c1d80/app/Http/Controllers/Content/BillboardController.php#L12)
+[Abstract Controllers with Repo and Helper Services](https://github.com/freshjones/freshcms/blob/4a94f9e4fb9114a83c6767884de3e0c1619c1d80/app/Http/Controllers/Content/BillboardController.php#L12)
