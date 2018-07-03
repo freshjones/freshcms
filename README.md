@@ -2,13 +2,16 @@
 Laravel Content Management System Demo
 
 Demo:
+
 https://cms.freshjones.com/
 
 
 Login
+
 https://cms.freshjones.com/login
 
 username: admin@freshjones.com
+
 password: welcome
 
 
