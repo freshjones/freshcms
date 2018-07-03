@@ -108,6 +108,10 @@ abstract class SectionService
       $this->setContent('type',$value);
   }
 
+  public function getType(){
+    return $this->content['type'];
+  }
+
   public function setID(){
     if(empty($this->content['id']))
       $this->setContent('id',Uuid::uuid1()->toString());

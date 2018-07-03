@@ -18,7 +18,7 @@
               </div>
               <div class=" ">
                   <div class="mx-1">
-                    <a :href="'/section/' + page + '/' + index + '/' + section.type + '/edit'" role="button" class="btn btn-primary">Edit</a>
+                    <a :href="getEditLink(page,section,index)" role="button" class="btn btn-primary">Edit</a>
                   </div>
               </div>
             </div>
@@ -57,14 +57,18 @@
     },
     methods: {
 
+      getEditLink: function(page,section,index){
+        if(section.type == 'billboards') section.type = 'billboard';
+        return '/' + section.type + '/edit/' + page + '/' + index;
+      },
       toggleLoader: function() {
         this.isWorking = !this.isWorking;
       },
-      onDraggableEnd(event) {
+      onDraggableEnd: function(event) {
 
         this.toggleLoader();
       
-        axios.patch('/sections/sort/' + this.page, this.state.sections)
+        axios.patch('/section/sort/' + this.page, this.state.sections)
           .then(response => {
             this.toggleLoader();
           })

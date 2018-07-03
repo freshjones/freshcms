@@ -2,16 +2,20 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+//authentication:{},
 window.Store = {
   state: {
     sections: [],
-    billboards: []
+    billboards: [],
+    settings: {
+      isActive:false
+    }
   },
   setState(name,value) {
     this.state[name] = value
   },
-  setBillboardData (data) {
-    this.state.billboards = data
+  setSetting(name,value) {
+    this.state.settings[name] = value
   }
 }
 
@@ -21,7 +25,8 @@ Vue.filter('yesno', function (value) {
 
 
 import Sections from './components/sections/SectionsComponent.vue'
-import Billboards from './components/BillboardsComponent.vue'
+import Billboards from './components/billboards/BillboardsComponent.vue'
+//import Settings from './components/settings/SettingsComponent.vue'
 
 const app = new Vue({
   el: '#app',
@@ -29,6 +34,18 @@ const app = new Vue({
     Sections,
     Billboards,
   },
+  mounted(){
+    /*
+    axios.get('/authenticate')
+      .then(response => {
+        Store.setSetting('authentication',response.data);
+      })
+      .catch(error => {
+
+      });
+    */
+  }
 });
 
+window.app = app
 

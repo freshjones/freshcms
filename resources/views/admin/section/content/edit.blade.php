@@ -1,8 +1,8 @@
-@extends('themes.base')
+@extends('layouts.app')
 @section('body')
   <div class="py-3">
     <h1>Content Section</h1>
-    <form method="POST" action="{{ route('section-update', [$page->id,$id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('content-update', [$page->id,$id]) }}" enctype="multipart/form-data">
       <input name="_method" type="hidden" value="PATCH">
       @csrf
       <input type="hidden" name="page" value="{{ $page->id }}">
@@ -38,11 +38,11 @@
         <button type="submit" id="submit-all" class="btn btn-primary">Submit</button>
         <a 
           class="btn btn-outline-danger" 
-          href="{{ route('section-destroy', [$page->id,$id,$content['type']]) }}" 
+          href="{{ route('content-destroy', [$page->id,$id]) }}" 
           onclick="event.preventDefault(); document.getElementById('destroy-section-form').submit();" role="button">Delete</a>
       </div>
     </form>
-    <form id="destroy-section-form" action="{{ route('section-destroy', [$page->id,$id,$content['type']]) }}" method="POST" style="display: none;">
+    <form id="destroy-section-form" action="{{ route('content-destroy', [$page->id,$id]) }}" method="POST" style="display: none;">
         <input name="_method" type="hidden" value="DELETE">
         @csrf
     </form>

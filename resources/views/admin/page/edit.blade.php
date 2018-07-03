@@ -1,4 +1,4 @@
-@extends('themes.base')
+@extends('layouts.app')
 @section('body')
   <div class="container-fluid">
     <div class="row flex-row-reverse">
@@ -38,16 +38,16 @@
                     Add New Section
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{{ route('section-create', [$page->id,'billboards']) }}">Add Billboards</a>
-                      <a class="dropdown-item" href="{{ route('section-create', [$page->id,'content']) }}">Add Content</a>
-                      <a class="dropdown-item" href="{{ route('section-create', [$page->id,'banner']) }}">Add Banners</a>
+                      <a class="dropdown-item" href="{{ route('billboard-create', $page->id) }}">Add Billboard</a>
+                      <a class="dropdown-item" href="{{ route('content-create', [$page->id,'content']) }}">Add Content</a>
+                      {{-- <a class="dropdown-item" href="{{ route('section-create', [$page->id,'banner']) }}">Add Banners</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'feature']) }}">Add Features</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'post']) }}">Add Posts</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'testimonial']) }}">Add Testimonials</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'faq']) }}">Add FAQs</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'collection']) }}">Add Collection</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'profile']) }}">Add Profile</a>
-                      <a class="dropdown-item" href="{{ route('section-create', [$page->id,'casestudy']) }}">Add Case Study</a>
+                      <a class="dropdown-item" href="{{ route('section-create', [$page->id,'casestudy']) }}">Add Case Study</a> --}}
                     </div>
                   </div>
                 </div>

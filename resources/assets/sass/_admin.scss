@@ -3,3 +3,18 @@
   width:16px;
   height:16px;
 }
+.sidebar {
+    position: absolute;
+    top: 26px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.sidebar-heading
+{
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-weight:bold;
+}

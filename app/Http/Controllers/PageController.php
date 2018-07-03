@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+
+use App\Repositories\PageRepository;
+
 use App\Page;
 use App\Content;
 use App\Variables;
 
 class PageController extends Controller
 {
+    private $repo;
     /**
      * Create a new controller instance.
      *
@@ -18,6 +22,7 @@ class PageController extends Controller
      */
     public function __construct()
     {
+        $this->repo = new PageRepository();
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
@@ -45,13 +50,9 @@ class PageController extends Controller
 
     public function edit($slug)
     {
-        $page = DB::table('pages')
-            ->join('contents', function ($join) {
-                $join->on('pages.id', '=', 'contents.page_id')->where('contents.lang', '=', "en");
-            })
-            ->where('pages.slug', '=', $slug)
-            ->first();
         
+        $page = $this->repo->getBySlug($slug);
+
         if(empty($page->content))
             return view('admin.page.edit', ['page' => $page, 'contents' => array()]);
 
@@ -96,27 +97,32 @@ class PageController extends Controller
 
     public function show($slug)
     {
+        //get the correct template
         $template = Variables::where('name','template')->first();
 
-        $page = DB::table('pages')
-            ->join('contents', function ($join) {
-                $join->on('pages.id', '=', 'contents.page_id')->where('contents.lang', '=', "en");
-            })
-            ->where('pages.slug', '=', $slug)
-            ->first();
-        
+        //load the page by slug
+        $page = $this->repo->getBySlug($slug);
+
+        //start a body variable
         $body = '';
 
+        //early exit
         if(empty($page->content))
             return view("themes.{$template->value}.page", ['page' => $page, 'body' => $body]);
 
+        //unserialize the content
         $pageContent = unserialize($page->content);
 
+        //create a collection of sections
         $collection = collect($pageContent)->where('display', 1);
 
+        //loop through the collection and render each section
         $collection->each(function ($section, $key) use (&$body) {
-            /* @todo need a data processor here for each section type */
-            if($section['type'] == 'billboards')
+
+            if($section['type'] == 'billboards') $section['type'] = 'billboard';
+
+            /* @todo need a data helper here for each section type */
+            if($section['type'] == 'billboard')
             {   
                 $billboards = array();
 

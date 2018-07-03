@@ -1,4 +1,4 @@
-@extends('themes.base')
+@extends('layouts.app')
 @section('body')
   
   <div class="py-3">

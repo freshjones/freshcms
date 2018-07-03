@@ -1,4 +1,4 @@
-@extends('themes.base')
+@extends('layouts.app')
 @section('body')
 
   <div class="border-bottom">
@@ -6,11 +6,6 @@
       <ul class="list-unstyled d-flex m-0 p-0">
         <li class="p-1"><a class="text-dark" href="tel:(413) 475-1810">(413) 475-1810</a></li>
         <li class="p-1"><a class="text-dark" href="mailto:hello@freshjones.com">hello@freshjones.com</a></li>
-        @auth
-          <li class="p-1"><a class="text-dark" href="/logout">logout</a></li>
-        @else
-          <li class="p-1"><a class="text-dark" href="/login">login</a></li>
-        @endauth
       </ul>
     </div>
   </div>
