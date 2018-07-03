@@ -37,7 +37,7 @@ abstract class BaseContentController extends Controller
     {
         //load the page record
         $page = $this->repo->getByID($page_id);
-
+        
         //load the current page content into the helper class
         $this->helper->setContents($page->content);
 

@@ -53,7 +53,6 @@ class PageController extends Controller
 
     public function edit($slug)
     {
-        
         $page = $this->repo->getBySlug($slug);
 
         if(empty($page->content))

@@ -39,7 +39,7 @@
                     </button>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="{{ route('billboard-create', $page->id) }}">Add Billboard</a>
-                      <a class="dropdown-item" href="{{ route('content-create', [$page->id,'content']) }}">Add Content</a>
+                      <a class="dropdown-item" href="{{ route('content-create', $page->id) }}">Add Content</a>
                       {{-- <a class="dropdown-item" href="{{ route('section-create', [$page->id,'banner']) }}">Add Banners</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'feature']) }}">Add Features</a>
                       <a class="dropdown-item" href="{{ route('section-create', [$page->id,'post']) }}">Add Posts</a>

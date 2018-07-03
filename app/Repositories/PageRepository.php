@@ -11,6 +11,16 @@ class PageRepository implements PageRepositoryInterface
     private function getAll($param,$value)
     {
         return DB::table('pages')
+            ->select(
+                'pages.id',
+                'pages.slug',
+                'pages.display',
+                'contents.lang',
+                'contents.title',
+                'contents.meta_description',
+                'contents.meta_robot',
+                'contents.content'
+            )
             ->join('contents', function ($join) {
                 $join->on('pages.id', '=', 'contents.page_id')->where('contents.lang', '=', "en");
             })
@@ -21,6 +31,16 @@ class PageRepository implements PageRepositoryInterface
     private function getOne($param,$value)
     {
         return DB::table('pages')
+            ->select(
+                'pages.id',
+                'pages.slug',
+                'pages.display',
+                'contents.lang',
+                'contents.title',
+                'contents.meta_description',
+                'contents.meta_robot',
+                'contents.content'
+            )
             ->join('contents', function ($join) {
                 $join->on('pages.id', '=', 'contents.page_id')->where('contents.lang', '=', "en");
             })
