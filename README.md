@@ -21,9 +21,9 @@ Highlights:
 
 [Simple Vue Data Store for sharing data between components](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/app.js#L5)
 
-[Placeholder content while data loads via axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L3)
+[Placeholder Content While Data Loads Via Axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L3)
 
-[Dynamically sort and save content via axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L66)
+[Dynamically Sort and Save Content Via Axios](https://github.com/freshjones/freshcms/blob/18bc721e5f7e778d2283012fda315bf1f2164cbe/resources/assets/js/components/sections/SectionsComponent.vue#L66)
 
 [Simple Concrete Controllers](https://github.com/freshjones/freshcms/blob/4a94f9e4fb9114a83c6767884de3e0c1619c1d80/app/Http/Controllers/Content/BillboardController.php#L12)
 
@@ -35,8 +35,8 @@ Highlights:
 
 [Models with Relationships and KeyName Override](https://github.com/freshjones/freshcms/blob/b9d0627cd2560ed322f0cfe70fb75068b5e12866/app/Page.php#L5)
 
-[Service Helper Classes with Laravel Collections](https://github.com/freshjones/freshcms/blob/0739b8a979ff407ab3d7861359a80e1a4f0e04f7/app/Services/Sections/SectionService.php#L7)
+[Service hHelper Classes with Laravel Collections](https://github.com/freshjones/freshcms/blob/0739b8a979ff407ab3d7861359a80e1a4f0e04f7/app/Services/Sections/SectionService.php#L7)
 
-[Extended views with Bootstrap theming](https://github.com/freshjones/freshcms/blob/ed308587bbe2ccce0f56632197054e4474641d9b/resources/views/admin/section/content/edit.blade.php#L1)
+[Extended Views with Bootstrap Theming](https://github.com/freshjones/freshcms/blob/ed308587bbe2ccce0f56632197054e4474641d9b/resources/views/admin/section/content/edit.blade.php#L1)
 
-
+[Unit Testing](https://github.com/freshjones/freshcms/blob/55c8c6003486a35fb1f486172b1bb98e2463385a/tests/Unit/PageControllerTest.php#L10)
