@@ -39,4 +39,4 @@ Laravel 5.6 content management system proof of concept with Vue.js administrativ
 
 [Extended Views with Bootstrap Theming](https://github.com/freshjones/freshcms/blob/ed308587bbe2ccce0f56632197054e4474641d9b/resources/views/admin/section/content/edit.blade.php#L1)
 
-[Unit Testing](https://github.com/freshjones/freshcms/blob/55c8c6003486a35fb1f486172b1bb98e2463385a/tests/Unit/PageControllerTest.php#L10)
+[Feature Tests](https://github.com/freshjones/freshcms/blob/328c4f645cd1d01768a307450bcd454701c375cf/tests/Feature/PageTest.php#L10)
