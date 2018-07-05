@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $page->title ? $page->title : '')
-@section('meta_description', $page->meta_description ? $page->meta_description : '')
+@section('title', 'Page Not Found')
 
 @section('body')
+
   <div class="border-bottom">
     <div class="container d-flex justify-content-end">
       <ul class="list-unstyled d-flex m-0 p-0">
@@ -26,13 +26,17 @@
           <span class="navbar-text mr-auto px-2 d-none d-lg-block">
             Navbar text with an inline element
           </span>
+        
           @include('themes.default._nav')
+        
         </div>
       </div>
     </div>
   </div>
-  <div >
-      {!! $body !!}
+
+  <div class="container">
+    <h2>{{ $exception->getMessage() }} </h2>
   </div>
 
 @endsection
+

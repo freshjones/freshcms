@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Variables;
+use Illuminate\Support\Facades\File;
 
 class ConfigurationController extends Controller
 {
@@ -26,8 +26,8 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        $vars = Variables::all();
-        return view("admin.settings.configuration", compact('vars'));
+        $settings = config('settings');
+        return view("admin.settings.configuration", ['settings' => $settings]);
     }
 
     /**
@@ -48,9 +48,20 @@ class ConfigurationController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = collect($request->all())->map(function($value,$key){
-            Variables::where('name',$key)->update(['value' => $value]);
-        });
+
+        $settings = $request->except(['_token']);;
+
+        $validatedData = $request->validate([
+            'language' => 'required',
+            'company' => 'required',
+            'theme' => 'required',
+        ]);
+        
+        $path = config_path() . '/settings.php';
+        $content = '<?php return ' . var_export($settings, true) . ';';
+
+        File::put($path, $content);
+
         return redirect('/');
     }
 

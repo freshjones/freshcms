@@ -10,18 +10,21 @@ trait RendersPageView
     public function renderPageBySlug($slug)
     {
 
-        //get the correct template
-        $template = Variables::where('name','template')->first();
-
+        $theme = $this->variable_get('theme','default');
+        
         //load the page by slug
         $page = $this->repo->getBySlug($slug);
+
+        //throw an exception if no page
+        if(!$page)
+            abort(404, 'Page Not Found');
 
         //start a body variable
         $body = '';
 
         //early exit
-        if(empty($page->content))
-            return view("themes.{$template->value}.page", ['page' => $page, 'body' => $body]);
+        if(!$page->content || empty($page->content))
+            return view("themes.{$theme}.page", ['page' => $page, 'body' => $body]);
 
         //unserialize the content
         $pageContent = unserialize($page->content);
@@ -55,7 +58,7 @@ trait RendersPageView
             $body .= $view->render();
         });
 
-        return view("themes.{$template->value}.page", ['page' => $page, 'body' => $body]);
+        return view("themes.{$theme}.page", ['page' => $page, 'body' => $body]);
     }
 
 }

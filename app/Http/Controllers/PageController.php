@@ -10,7 +10,6 @@ use App\Repositories\PageRepository;
 
 use App\Page;
 use App\Content;
-use App\Variables;
 
 class PageController extends Controller
 {
@@ -99,9 +98,8 @@ class PageController extends Controller
 
     public function show($slug)
     {
-        $front = Variables::where('name','front')->first();
 
-        if($slug == $front->value)
+        if($slug == $this->variable_get('front',null) )
             return redirect()->route('home');
         
         return $this->renderPageBySlug($slug);

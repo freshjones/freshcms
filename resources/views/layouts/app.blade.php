@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'FreshCMS') }}</title>
+    <title>@hasSection('title')@yield('title') | {{ config('settings.company', 'Fresh CMS') }}@else{{ config('settings.company', 'Fresh CMS') }}@endif</title>
+
+    <meta name="description" content="@hasSection('meta_description')@yield('meta_description')@else{{ config('settings.meta_description', '') }}@endif" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
