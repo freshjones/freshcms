@@ -7,10 +7,10 @@ use App\Variables;
 trait RendersPageView
 {
 
-    public function renderPageBySlug($slug)
+    public function renderPageBySlug($slug,$isFront=false)
     {
 
-        $theme = $this->variable_get('theme','default');
+        $theme = config('settings.theme','default');
         
         //load the page by slug
         $page = $this->repo->getBySlug($slug);
@@ -24,7 +24,7 @@ trait RendersPageView
 
         //early exit
         if(!$page->content || empty($page->content))
-            return view("themes.{$theme}.page", ['page' => $page, 'body' => $body]);
+            return view("themes.{$theme}.page", ['isFront'=>$isFront, 'page' => $page, 'body' => $body]);
 
         //unserialize the content
         $pageContent = unserialize($page->content);
@@ -58,7 +58,7 @@ trait RendersPageView
             $body .= $view->render();
         });
 
-        return view("themes.{$theme}.page", ['page' => $page, 'body' => $body]);
+        return view("themes.{$theme}.page", ['isFront'=>$isFront, 'page' => $page, 'body' => $body]);
     }
 
 }

@@ -8,18 +8,18 @@
           @csrf
           <input type="hidden" name="lang" value="en">
           <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" name="title" class="form-control" placeholder="Enter a Title" value="{{ old('title', $page->title) }}" required />
+            <label for="title"><span class="text-uppercase font-weight-bold text-secondary">Title</span>@if($errors->first('title')) <span class="text-danger">({{ $errors->first('title') }})</span>@endif</label>
+            <input type="text" name="title" class="form-control @if($errors->first('title')) border-danger @endif" placeholder="Enter a Title" value="{{ old('title', $page->title) }}"  />
             <small id="titleHelp" class="form-text text-muted">Enter a title for your page</small>
           </div>
           <div class="form-group">
-            <label for="slug">URL</label>
-            <input type="text" name="slug" class="form-control" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}" required />
+            <label for="slug"><span class="text-uppercase font-weight-bold text-secondary">URL</span>@if($errors->first('slug')) <span class="text-danger">({{ $errors->first('slug') }})</span>@endif</label>
+            <input type="text" name="slug" class="form-control @if($errors->first('slug')) border-danger @endif" placeholder="Enter a URL" value="{{ old('slug', $page->slug) }}"  />
             <small id="slugHelp" class="form-text text-muted">Enter a URL for this page</small>
           </div>
           <div class="form-group">
-            <label for="meta_description">Description</label>
-            <textarea name="meta_description" class="form-control" rows="3">{{ old('meta_description', $page->meta_description) }}</textarea>
+            <label for="meta_description"><span class="text-uppercase font-weight-bold text-secondary">Meta Description</span>@if($errors->first('meta_description')) <span class="text-danger">({{ $errors->first('meta_description') }})</span> @endif</label>
+            <textarea name="meta_description" class="form-control @if($errors->first('meta_description')) border-danger @endif" rows="3" >{{ old('meta_description', $page->meta_description) }}</textarea>
           </div>
           <div class="text-right">
             <button type="submit" class="btn btn-success">Update Page</button>

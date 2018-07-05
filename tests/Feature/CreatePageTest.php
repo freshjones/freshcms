@@ -5,39 +5,88 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\Collection;
 
 class CreatePageTest extends TestCase
 {
     
     use RefreshDatabase;
 
-    public function test_displays_new_page_form()
+    /** @test */
+    public function a_guest_can_not_create_a_page()
     {
-        $user = factory('App\User')->create();
+        $this->withExceptionHandling();
 
-        $response = $this->actingAs($user)
-                         ->get('/page/create');
+        $this->get('/page/create')
+            ->assertRedirect('/login');
 
-        $response->assertStatus(200);
+        $this->post('/page', [])
+            ->assertRedirect('/login');
     }
-   
-    public function test_displays_new_page_form_submit()
+
+    /** @test */
+    public function an_authenticated_user_can_view_create_a_page()
     {
+        $this->signIn();
+
+        $this->get('/page/create')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function an_authenticated_user_can_create_pages()
+    {
+        $this->signIn();
+
+        $page = make('App\Page');
+        $contents = make('App\Content');
       
-        $slug = 'test-page';
+        $this->post('/page', [
+                'title' => $contents->title,
+                'slug' => $page->slug,
+                'lang' => $contents->lang,
+                'meta_description' => $contents->meta_description,
+                'meta_robot' => $contents->meta_robot,
+            ])
+            ->assertRedirect($page->slug);
+    }
 
-        $user = factory('App\User')->create();
+    /** @test */
+    public function a_page_requires_a_title()
+    {
+        $this->publishPage([],['title' => null])
+            ->assertSessionHasErrors('title');
+    }
 
-        $response = $this->actingAs($user)
-                         ->post('/page', [
-            'title' => 'blah',
-            'slug' => $slug,
-            'lang' => 'en',
-            'meta_description' => 'my description',
-        ]);
+    /** @test */
+    public function a_page_requires_a_slug()
+    {
+        $this->publishPage(['slug' => null])
+            ->assertSessionHasErrors('slug');
+    }
 
-        //redirect to slug 
-        $response->assertRedirect($slug);
+    /** @test */
+    public function a_page_requires_a_meta_description()
+    {
+        $this->publishPage([],['meta_description' => null])
+            ->assertSessionHasErrors('meta_description');
+    }
+
+    private function publishPage($page_overrides=[],$content_overrides=[])
+    {
+        $this->withExceptionHandling()->signIn();
+
+        $page = make('App\Page',$page_overrides);
+        $contents = make('App\Content',$content_overrides);
+
+        return $this->post('/page', [
+                'title' => $contents->title,
+                'slug' => $page->slug,
+                'lang' => $contents->lang,
+                'meta_description' => $contents->meta_description,
+                'meta_robot' => $contents->meta_robot,
+            ]);
+
     }
 
 }

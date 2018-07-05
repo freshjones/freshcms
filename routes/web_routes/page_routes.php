@@ -13,7 +13,7 @@ Route::get('/page/{slug}/edit', 'PageController@edit')->name('page-edit');
 Route::patch('/page/update/{slug}', 'PageController@update')->name('page-update');
 
 //Home Route
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index')->name('home');
 
 //catch all route for pages
 Route::get('/{slug}', 'PageController@show')->name('page-show');

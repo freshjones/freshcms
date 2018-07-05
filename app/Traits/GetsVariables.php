@@ -10,11 +10,6 @@ trait GetsVariables
         if(!$name)
           return;
 
-        $variable = config("settings.{$name}");
-      
-        if(!$variable)
-          $variable = $default;
-
-        return $variable;
+        return config("settings.{$name}", $default);
     }
 }

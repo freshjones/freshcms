@@ -17,6 +17,7 @@ class PageController extends Controller
     use RendersPageView;
 
     private $repo;
+
     /**
      * Create a new controller instance.
      *
@@ -28,25 +29,56 @@ class PageController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('home');
+    
+        $front = config('settings.front');
+        $theme = config('settings.theme','default');
+
+        //if we have a homepage
+        if(!is_null($front))
+            return $this->renderPageBySlug($front,true);
+
+        //return the view
+        return view("themes.{$theme}.home", ['isFront' => true, 'pages' => $this->repo->all() ]);
+  
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $page = new \stdClass;
-        $page->title = '';
-        $page->slug = '';
-        $page->meta_description = '';
-        return view('admin.page.create', compact('page'));
+        return view('admin.page.create');
     }
     
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'meta_description' => 'required',
+        ]);
+
         $slug = str_slug($request->slug);
+
         $page = Page::create(['slug' => $slug])
-            ->contents()->create(request(['lang','title','meta_description']));
+            ->contents()
+            ->create(request(['lang','title','meta_description']));
+        
         return redirect($slug);
     }
 
@@ -90,16 +122,23 @@ class PageController extends Controller
 
     public function update(Request $request,$slug)
     {
+
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'meta_description' => 'required',
+        ]);
+
         $page = Page::where('slug',$slug)->first();
         $page->update(request(['slug']));
         $content = Content::where([['page_id',$page->id],['lang','en']])->update(request(['title','meta_description']));
         return redirect($request->slug);
+        
     }
 
     public function show($slug)
     {
-
-        if($slug == $this->variable_get('front',null) )
+        if($slug == config('settings.front',null) )
             return redirect()->route('home');
         
         return $this->renderPageBySlug($slug);

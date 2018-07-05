@@ -8,13 +8,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ContentTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    /** @test */
+    public function content_has_a_page()
     {
-        $this->assertTrue(true);
+    
+        $content = factory('App\Content')->create();
+        
+        $this->assertInstanceOf('App\Page', $content->page);
+
     }
+
 }
