@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Contracts\PageRepositoryInterface;
+use App\Page;
+use App\Content;
 
 class PageRepository implements PageRepositoryInterface
 {

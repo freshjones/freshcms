@@ -28,7 +28,6 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     @foreach ($pages as $page)
       <h2><a href="/{{ $page->slug }}">{{ $page->title }}</a></h2>

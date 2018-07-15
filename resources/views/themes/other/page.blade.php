@@ -12,7 +12,7 @@
   <div class="border-bottom bg-white sticky-top">
     <div class="container">
       <div class=" navbar navbar-expand-lg navbar-light mx-0 px-0">
-        <h5 class="navbar-brand m-0 p-0">Company name</h5>
+        <h5 class="navbar-brand m-0 p-0">{{ config('settings.company', 'Fresh CMS') }}</h5>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

@@ -64,6 +64,7 @@ class SettingsTest extends TestCase
         foreach($fields AS $field) {
 
             try {
+                
                 $response = $this->actingAs($this->user)
                     ->post('/settings/configuration', [
                         'language' => $field == 'language' ? '' : 'en',
@@ -72,6 +73,7 @@ class SettingsTest extends TestCase
                         'front' => null,
                         'theme' => $field == 'theme' ? '' : 'default',
                     ]);
+
             } catch (ValidationException $e) {
 
                 $this->assertEquals(

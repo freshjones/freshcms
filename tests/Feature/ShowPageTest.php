@@ -66,5 +66,25 @@ class ShowPageTest extends TestCase
             ->assertSee('<meta name="description" content="' . $contents->meta_description . '" />');
 
     }
+
+    /** @test */
+    public function a_pages_contents_is_sanitized()
+    {  
+
+        $maliciousContent = serialize([[
+            'id' => 1,
+            'type' => 'content',
+            'label' => 'blah',
+            'order' => 0,
+            'display' => 1,
+            'style' => 'default',
+            'data' => ['description' => '<script>alert("Harmful Script");</script><a href="#" onClick="javascript:alert(\'boom\');" >Link</a><p>Test</p>'],
+        ]]);
+
+        $pageContent = make('App\Content', ['content' => $maliciousContent]);
+
+        $this->assertContains('<a href="#">Link</a><p>Test</p>',$pageContent->render);
+   
+    }
  
 }

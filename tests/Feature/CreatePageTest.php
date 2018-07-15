@@ -66,6 +66,19 @@ class CreatePageTest extends TestCase
     }
 
     /** @test */
+    public function a_page_requires_a_unique_slug()
+    {
+        
+        $this->withExceptionHandling()->signIn();
+
+        $firstPage = create("App\Page");
+        
+        $this->publishPage(['slug' => $firstPage->slug])
+            ->assertSessionHasErrors('slug');
+
+    }
+
+    /** @test */
     public function a_page_requires_a_meta_description()
     {
         $this->publishPage([],['meta_description' => null])

@@ -52,6 +52,13 @@ class EditPageTest extends TestCase
     }
 
     /** @test */
+    public function an_edit_page_slug_can_have_spaces()
+    {
+        $return = $this->editPage(['slug' => "this is a spaced out slug"]);
+        $return['response']->assertRedirect($return['slug']);
+    }
+
+    /** @test */
     public function an_edit_page_requires_a_slug()
     {
         $return = $this->editPage(['slug' => null]);
@@ -65,6 +72,29 @@ class EditPageTest extends TestCase
         $return['response']->assertSessionHasErrors('meta_description');
     }
 
+    /** @test */
+    public function an_edit_page_requires_a_unique_slug()
+    {
+        
+        $this->withExceptionHandling()->signIn();
+
+        $firstPage = create("App\Page");
+        $firstPage->contents()->save(make('App\Content'));
+
+        $secondPage = create("App\Page");
+        $secondPage->contents()->save(make('App\Content'));
+
+        $this->patch("/page/update/{$firstPage->slug}", [
+                'title' => 'blah',
+                'slug' => $secondPage->slug,
+                'lang' => 'en',
+                'meta_description' => 'blah',
+                'meta_robot' => '',
+            ])
+            ->assertSessionHasErrors('slug');
+
+    }
+
     private function editPage($page_overrides=[],$content_overrides=[])
     {
         $this->withExceptionHandling()->signIn();
@@ -76,9 +106,8 @@ class EditPageTest extends TestCase
         //make some new content
         $newPage = make('App\Page',$page_overrides);
         $newContents = make('App\Content',$content_overrides);
-
         return [
-            "slug" => $newPage->slug, 
+            "slug" => str_slug($newPage->slug), 
             "response" => $this->patch("/page/update/{$page->slug}", [
                 'title' => $newContents->title,
                 'slug' => $newPage->slug,

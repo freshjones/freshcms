@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\View;
-use App\Traits\RendersPageView;
 use App\Repositories\PageRepository;
+use Illuminate\Validation\Rule;
 
 use App\Page;
 use App\Content;
 
 class PageController extends Controller
 {
-
-    use RendersPageView;
 
     private $repo;
 
@@ -42,7 +38,12 @@ class PageController extends Controller
 
         //if we have a homepage
         if(!is_null($front))
-            return $this->renderPageBySlug($front,true);
+            return $this->renderBySlug($front);
+
+        $pages = $this->repo->all();
+
+        if(!$pages->all())
+           return view("themes.empty"); 
 
         //return the view
         return view("themes.{$theme}.home", ['isFront' => true, 'pages' => $this->repo->all() ]);
@@ -66,24 +67,27 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'meta_description' => 'required',
-        ]);
+    {   
 
         $slug = str_slug($request->slug);
+        
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'slug' => ['required',Rule::unique('pages')->ignore($slug),],
+            'meta_description' => 'required',
+        ]);
 
         $page = Page::create(['slug' => $slug])
             ->contents()
             ->create(request(['lang','title','meta_description']));
         
         return redirect($slug);
+
     }
 
     public function edit($slug)
     {
+        
         $page = $this->repo->getBySlug($slug);
 
         if(empty($page->content))
@@ -92,10 +96,11 @@ class PageController extends Controller
         $collection = collect( unserialize($page->content) )
             ->map(function ($item, $key) {
                 
-                 if(!isset($item['display']))
+                if(!isset($item['display']))
                     $item['display'] = -1;
 
                 $item['status'] = 'draft';
+
                 switch($item['display'])
                 {
                     case 0:
@@ -118,21 +123,33 @@ class PageController extends Controller
             ->sortBy('order');
 
         return view('admin.page.edit', ['page' => $page, 'contents' => $collection]);
+    
     }
 
-    public function update(Request $request,$slug)
+    public function update(Request $request, $slug)
     {
 
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'slug' => 'required',
-            'meta_description' => 'required',
-        ]);
-
         $page = Page::where('slug',$slug)->first();
-        $page->update(request(['slug']));
+
+        $validatedData = $request->validate([
+                'title' => 'required',
+                'slug' => [
+                    'required',
+                    Rule::unique('pages')->ignore($page->id),
+                ],
+                'meta_description' => 'required',
+            ],
+            [
+                'slug.unique' => "That URL is taken please choose a unique URL",
+            ]);
+
+        $slug = str_slug($request->slug);
+
+        $page->update(['slug' => $slug]);
+
         $content = Content::where([['page_id',$page->id],['lang','en']])->update(request(['title','meta_description']));
-        return redirect($request->slug);
+
+        return redirect($slug);
         
     }
 
@@ -140,8 +157,8 @@ class PageController extends Controller
     {
         if($slug == config('settings.front',null) )
             return redirect()->route('home');
-        
-        return $this->renderPageBySlug($slug);
+
+        return $this->renderBySlug($slug);
     }
 
 

@@ -15,14 +15,14 @@
   <div class="border-bottom bg-white sticky-top">
     <div class="container">
       <div class=" navbar navbar-expand-lg navbar-light mx-0 px-0">
-        <h5 class="navbar-brand m-0 p-0">Company name</h5>
+        <h5 class="company-name navbar-brand m-0 p-0">{{ config('settings.company', 'Fresh CMS') }}</h5>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <span class="navbar-text mr-auto px-2 d-none d-lg-block">
-            Navbar text with an inline element
-          </span>
+          @if(config('settings.tagline'))
+          <span class="tagline navbar-text mr-auto px-2 d-none d-lg-block">{{ config('settings.tagline') }}</span>
+          @endif
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="#">Home</a>
