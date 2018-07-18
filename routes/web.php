@@ -20,7 +20,7 @@ require(__DIR__.'/web_routes/page_routes.php');
 
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
-    return 'cool';
+    return ['status'=>'cool'];
 
 });
 
