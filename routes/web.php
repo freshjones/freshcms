@@ -21,7 +21,7 @@ require(__DIR__.'/web_routes/page_routes.php');
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     return [
-        'fulfillmentText'=>'This is a text response'
+        'fulfillmentText'=>'HEY BEAUTY EH?'
     ];
 
 });
