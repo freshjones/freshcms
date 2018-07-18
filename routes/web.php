@@ -22,7 +22,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $file = __DIR__ . '/../demo.txt';
 
-    file_put_contents($file, $request->all() );
+    file_put_contents($file, print_r($request->all(),true) );
 
     return [
         'fulfillmentText'=>'HEY BEAUTY EH?'
