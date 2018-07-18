@@ -100,6 +100,10 @@ abstract class BaseContentController extends Controller
      */
     public function update($page_id, $section_key, Request $request)
     {
+        
+        $validatedData = $request->validate([
+            'label' => 'required',
+        ]);
 
         //load the page record
         $page = $this->repo->getByID($page_id);
@@ -118,7 +122,7 @@ abstract class BaseContentController extends Controller
 
         //save to the database
         Content::where([['page_id',$page_id],['lang','en']])->update(['content' => $this->helper->getContents() ]);
-        
+     
         //redirect to the edit screen of the page
         return redirect()->route('page-edit', [$page->slug]);
     }

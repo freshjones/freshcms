@@ -40,7 +40,7 @@ class EditContentTest extends TestCase
         $newText = 'This is some new random text';
         $newLabel = 'some new label';
 
-        $this->withExceptionHandling()->signIn();
+        $this->signIn();
 
         //create a new page and content and persist it
         $page = create("App\Page");
@@ -59,6 +59,22 @@ class EditContentTest extends TestCase
         $this->assertSame($newText, $pageContent['data']['description']);
         $this->assertSame($newLabel, $pageContent['label']);
         $this->assertSame(1, $pageContent['display']);
+
+    }
+
+    /** @test */
+    public function when_editing_content_a_label_is_required()
+    {
+
+        $this->withExceptionHandling()->signIn();
+
+        //create a new page and content and persist it
+        $page = create("App\Page");
+        $page->contents()->save(make('App\Content'));
+
+        $response = $this->patch("/content/update/{$page->id}/0", [
+                'label' => ''
+            ])->assertSessionHasErrors('label');
 
     }
 
