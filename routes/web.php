@@ -57,6 +57,14 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
             $message = 'ok, what type of class are you looking for?';
         break;
 
+        case 'Ask-class':
+            $message = 'What days of the week do you want the class on?';
+        break;
+
+        case 'Ask-days':
+            $message = 'How about this class? blah...';
+        break;
+
     }
 
     return [
