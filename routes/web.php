@@ -30,7 +30,7 @@ function getMessages()
         }
     },
     {
-        "link": {
+        "link_out": {
           "destinationName": "blah"
         }
     }
