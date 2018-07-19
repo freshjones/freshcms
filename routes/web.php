@@ -53,6 +53,10 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
             $message = 'Excellent, Are you looking for a class this fall?';
         break;
 
+        case 'Ask-session':
+            $message = 'ok, what type of class are you looking for?';
+        break;
+
     }
 
     return [
