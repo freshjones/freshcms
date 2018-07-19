@@ -22,13 +22,7 @@ require(__DIR__.'/web_routes/page_routes.php');
 function getMessages()
 {
     $json = '[
-    {
-        "text": {
-          "text": [
-            "OK, Try this class"
-          ]
-        }
-    },
+   
     {
         "basic_card": {
           "title": "Blah",
