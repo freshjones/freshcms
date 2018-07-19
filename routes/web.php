@@ -23,7 +23,10 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     $session = $request->session;
     $query = $request->queryResult;
     $intent = $query['intent'];
-
+echo '<pre>';
+print_r($session);
+echo '</pre>';
+die();
     return [
         'fulfillmentText'=>'Your intent was ' . $intent;
     ]; 
