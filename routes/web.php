@@ -20,15 +20,12 @@ require(__DIR__.'/web_routes/page_routes.php');
 
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
-    $session = $request->session;
-    $query = $request->queryResult;
-    $intent = $query['intent'];
-echo '<pre>';
-print_r($session);
-echo '</pre>';
-die();
+    //$session = $request->session;
+    //$query = $request->queryResult;
+    //$intent = $query['intent'];
+
     return [
-        'fulfillmentText'=>'Your intent was ' . $intent;
+        'fulfillmentText'=>'Your intent was ' . $request->session;
     ]; 
 
     /*
