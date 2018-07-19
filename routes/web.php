@@ -30,7 +30,7 @@ function getMessages()
         }
     },
     {
-        "link_out_chip": {
+        "link": {
           "destinationName": "blah"
         }
     }
