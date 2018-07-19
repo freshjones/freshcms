@@ -39,11 +39,11 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     */
 
-    //$intent = $request->queryResult->intent->displayName;
+    $intent = $request->queryResult['intent']['displayName'];
     $session = $request->session;
 
     return [
-        'fulfillmentText'=>"Your intent is your session is {$session}.",
+        'fulfillmentText'=>"Your intent {$intent} is your session is {$session}.",
     ];
    
 });
