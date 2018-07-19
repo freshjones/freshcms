@@ -30,8 +30,9 @@ function getMessages()
         }
     },
     {
-        "link_out": {
-          "destinationName": "blah"
+        "LinkOutSuggestion": {
+          "destination_name": "blah",
+          "uri": "https://www.google.com"
         }
     }
   ]';
