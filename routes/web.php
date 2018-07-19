@@ -30,10 +30,8 @@ function getMessages()
         }
     },
     {
-        "text": {
-          "text": [
-            "[blah](https://www.google.com)"
-          ]
+        "link_out_chip": {
+          "destinationName": "blah"
         }
     }
   ]';
