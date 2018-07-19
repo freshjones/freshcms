@@ -41,9 +41,18 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $intent = $request->queryResult['intent']['displayName'];
     $session = $request->session;
+    
+    $message = 'Default message';
+
+    switch($intent)
+    {
+        'Ask-findclass':
+            $message = 'OK, Lets get started, what YMCA do you use?';
+        break;
+    }
 
     return [
-        'fulfillmentText'=>"Your intent {$intent} is your session is {$session}.",
+        'fulfillmentText'=> $message,
     ];
    
 });
