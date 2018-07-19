@@ -44,11 +44,7 @@ function getMessages()
     {
         "quick_replies": {
           "title": "Actions",
-          "quick_replies": [
-            {
-                "key": "Next"
-            }
-          ]
+          "quick_replies": []
         }
     }
   ]';
