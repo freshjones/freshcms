@@ -25,7 +25,7 @@ function getMessages()
     {
         "text": {
           "text": [
-            "OK, Try this class"
+            "OK, Try these classes"
           ]
         }
     },
@@ -42,9 +42,15 @@ function getMessages()
         }
     },
     {
-        "quick_replies": {
-          "title": "Actions",
-          "quick_replies": []
+        "card": {
+          "title": "15296 - Personal Training and Specialty: Synergy 1 - Bundle",
+          "subtitle": "Small group training utilizing our Synergy unit.",
+          "buttons": [
+            {
+                "text": "Register Now",
+                "postback": "https://www.google.com"
+            }
+          ]
         }
     }
   ]';
