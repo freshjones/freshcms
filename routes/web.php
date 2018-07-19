@@ -46,7 +46,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     switch($intent)
     {
-        'Ask-findclass':
+        case 'Ask-findclass':
             $message = 'OK, Lets get started, what YMCA do you use?';
         break;
     }
