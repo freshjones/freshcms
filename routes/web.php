@@ -67,13 +67,17 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
         break;
 
         case 'Ask-days':
-            $message = 'How about this class?' . print_r($request->session()->all(),true);
+            $message = 'How about this class? 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons';
         break;
 
     }
 
     return [
-        'fulfillmentText'=> $message,
+        'fulfillment'=> array(
+            "messages" => array(
+                $message
+            ),
+        ),
     ];
    
 });
