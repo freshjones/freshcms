@@ -31,8 +31,8 @@ function getMessages()
     },
     {
         "card": {
-          "title": "Blah",
-          "subtitle": "Also Blah",
+          "title": "Swim Lessons",
+          "subtitle": "Private Swim Youth - 20pack - 30minute private lessons",
           "buttons": [
             {
                 "text": "Register Now",
