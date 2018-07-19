@@ -18,6 +18,47 @@ require(__DIR__.'/web_routes/billboard_screen_routes.php');
 /* page routes */
 require(__DIR__.'/web_routes/page_routes.php');
 
+class Msg{
+    public $buttons;
+    public $formattedText;
+    public $title;
+    public $type = "basic_card";
+}
+
+class Button{
+    public $title;
+    public $openUrlAction;
+}
+
+class ButtonURL{
+    public $url = 'https://www.google.com';
+}
+
+function getButtons()
+{
+    $buttons = array();
+    $button = new Button();
+    $button->title = 'test';
+    $buttonUrl = new ButtonURL();
+    $button->openUrlAction = $buttonUrl->$url;
+    $buttons[] = $button;
+    return $buttons;
+}
+
+function getMessages()
+{
+    $messages = array();
+
+    $message1 = new Msg();
+    $message1->formattedText = 'OK DOKEY';
+    $message1->title = 'SWEET';
+    $message1->buttons = getButtons();
+
+    $messages[] = $message1;
+
+    return $messages;    
+
+}
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     //$session = $request->session;
@@ -74,7 +115,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
         case 'Ask-days':
             $message = "How about this class? \n\n 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons";
-            $return = [ 'fulfillmentText'=> $message, ];
+            $return = [ 'messages'=> getMessages(), ];
         break;
 
     }
