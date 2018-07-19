@@ -39,8 +39,13 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
   
 
     $intent = $request->queryResult['intent']['displayName'];
-    $session = $request->session;
-    
+  
+    $session = session($request->session, array());
+
+    $request->session()->push($request->session, array(
+        'intent' => $intent,
+    ));
+
     $message = 'Default message';
 
     switch($intent)
@@ -62,7 +67,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
         break;
 
         case 'Ask-days':
-            $message = 'How about this class? blah...';
+            $message = 'How about this class?' . print_r($request->session()->all(),true);
         break;
 
     }
