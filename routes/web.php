@@ -73,11 +73,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     }
 
     return [
-        'fulfillment'=> array(
-            "messages" => array(
-                $message
-            ),
-        ),
+        'fulfillmentText'=> $message,
     ];
    
 });
