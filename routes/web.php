@@ -40,7 +40,7 @@ function getButtons()
     $button = new Button();
     $button->title = 'test';
     $buttonUrl = new ButtonURL();
-    $button->openUrlAction = $buttonUrl->$url;
+    $button->openUrlAction = $buttonUrl->url;
     $buttons[] = $button;
     return $buttons;
 }
