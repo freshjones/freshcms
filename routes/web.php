@@ -25,14 +25,14 @@ function getMessages()
     {
         "text": {
           "text": [
-            "Text defined in Dialogflows console for the intent that was matched"
+            "OK, Try this class"
           ]
         }
     },
     {
         "text": {
           "text": [
-            "Text defined in Dialogflows console for the intent that was matched"
+            "[blah](https://www.google.com)"
           ]
         }
     }
