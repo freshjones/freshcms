@@ -24,19 +24,18 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     //$query = $request->queryResult;
     //$intent = $query['intent'];
 
-    return [
-        'fulfillmentText'=>'Your intent was ' . $request->session;
-    ]; 
+    // return [
+    //     'fulfillmentText'=>'Your intent was ' . $request->session;
+    // ]; 
 
-    /*
     $file = __DIR__ . '/../demo.txt';
 
-    file_put_contents($file, print_r($request->all(),true) );
+    file_put_contents($file, var_export($request->all()) );
 
     return [
         'fulfillmentText'=>'HEY BEAUTY EH?'
     ];
-    */
+   
 });
 
 
