@@ -30,10 +30,10 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $file = __DIR__ . '/../demo.txt';
 
-    file_put_contents($file, var_export($request->all()) );
+    file_put_contents($file, var_export($request->all(),true) );
 
     return [
-        'fulfillmentText'=>'HEY BEAUTY EH?'
+        'fulfillmentText'=>'HEY BEAUTY EH?';
     ];
    
 });
