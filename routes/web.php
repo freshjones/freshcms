@@ -28,12 +28,12 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     //     'fulfillmentText'=>'Your intent was ' . $request->session;
     // ]; 
 
-    //$file = __DIR__ . '/../demo.txt';
+    $file = __DIR__ . '/../demo.txt';
 
-    //file_put_contents($file, json_encode($request->all()) );
+    file_put_contents($file, json_encode($request->all()) );
 
     return [
-        'fulfillmentText'=>'HEY BEAUTY EH?';
+        'fulfillmentText'=>'HEY BEAUTY EH?',
     ];
    
 });
