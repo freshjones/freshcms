@@ -18,47 +18,29 @@ require(__DIR__.'/web_routes/billboard_screen_routes.php');
 /* page routes */
 require(__DIR__.'/web_routes/page_routes.php');
 
-class Msg{
-    public $buttons;
-    public $formattedText;
-    public $title;
-    public $type = "basic_card";
-}
-
-class Button{
-    public $title;
-    public $openUrlAction;
-}
-
-class ButtonURL{
-    public $url = 'https://www.google.com';
-}
-
-function getButtons()
-{
-    $buttons = array();
-    $button = new Button();
-    $button->title = 'test';
-    $buttonUrl = new ButtonURL();
-    $button->openUrlAction = $buttonUrl->url;
-    $buttons[] = $button;
-    return $buttons;
-}
 
 function getMessages()
 {
-    $messages = array();
+    $json = '[
+    {
+      "card": {
+        "title": "card title",
+        "subtitle": "card text",
+        "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
+        "buttons": [
+          {
+            "text": "button text",
+            "postback": "https://assistant.google.com/"
+          }
+        ]
+      }
+    }
+  ]';
 
-    $message1 = new Msg();
-    $message1->formattedText = 'OK DOKEY';
-    $message1->title = 'SWEET';
-    $message1->buttons = getButtons();
-
-    $messages[] = $message1;
-
-    return $messages;    
+  return json_decode($json);
 
 }
+
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     //$session = $request->session;
