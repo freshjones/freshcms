@@ -22,12 +22,23 @@ require(__DIR__.'/web_routes/page_routes.php');
 function getMessages()
 {
     $json = '[
-   
     {
-        "basic_card": {
+        "text": {
+          "text": [
+            "OK, Try this class"
+          ]
+        }
+    },
+    {
+        "card": {
           "title": "Blah",
           "subtitle": "Also Blah",
-          "formatted_text": "Here is some txt"
+          "buttons": [
+            {
+                "text": "Register Now",
+                "postback": "https://www.google.com"
+            }
+          ]
         }
     }
   ]';
