@@ -67,7 +67,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
         break;
 
         case 'Ask-days':
-            $message = 'How about this class? 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons';
+            $message = "How about this class? \n\n 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons";
         break;
 
     }
