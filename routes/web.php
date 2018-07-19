@@ -30,9 +30,10 @@ function getMessages()
         }
     },
     {
-        "link_out_suggestion": {
-          "destination_name": "blah",
-          "uri": "https://www.google.com"
+        "basic_card": {
+          "title": "Blah",
+          "subtitle": "Also Blah",
+          "formatted_text": "Here is some txt"
         }
     }
   ]';
