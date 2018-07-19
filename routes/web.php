@@ -48,33 +48,38 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $message = 'Default message';
 
+    $messages = array();
+
     switch($intent)
     {
         case 'Ask-findclass':
             $message = 'OK, Lets get started, what YMCA do you use?';
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
         case 'Ask-location':
             $message = 'Excellent, Are you looking for a class this fall?';
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
         case 'Ask-session':
             $message = 'ok, what type of class are you looking for?';
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
         case 'Ask-class':
             $message = 'What days of the week do you want the class on?';
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
         case 'Ask-days':
             $message = "How about this class? \n\n 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons";
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
     }
 
-    return [
-        'fulfillmentText'=> $message,
-    ];
+    return $return;
    
 });
 
