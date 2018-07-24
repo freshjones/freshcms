@@ -18,6 +18,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     $message = 'Default message';
 
     $messages = array();
+
     $json = '[
         {
             "text": {
@@ -52,13 +53,11 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
         }
     ]';
 
-    $return = '';
     switch($intent)
     {
         case 'Ask-findclass':
-            $return = [
-                "fulfillmentText" => "OK, Lets get started, what location do you use?"
-            ];
+            $message = 'OK, Lets get started, what location do you use?';
+            $return = [ 'fulfillmentText'=> $message, ];
         break;
 
         case 'Ask-location':
