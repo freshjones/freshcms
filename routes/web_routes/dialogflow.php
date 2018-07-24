@@ -64,7 +64,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
                 "fulfillmentText": "OK, Lets get started, what location do you use?", 
                 "payload": {
                   "facebook": {
-                     "text": "Pick a location:",
+                     "text": "What location do you use?",
                      "quick_replies": [
                             {
                                 "content_type": "text",
