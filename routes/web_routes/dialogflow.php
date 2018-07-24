@@ -19,9 +19,9 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $messages = array();
 
-    $quickreplyjson = '{
+    $quickreplyjson = '[{
         "fulfillmentText": "OK, Lets get started, what location do you use?"
-    }';
+    }]';
 
     $json = '[
         {
