@@ -60,7 +60,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $return = json_decode('[{ 
+             $return = json_decode('{ 
                 "fulfillmentText": "OK, Lets get started, what location do you use?", 
                 "data": {
                   "facebook": {
@@ -79,7 +79,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
                         ]
                     }
                 }
-            }]');
+            }', true);
         break;
 
         case 'Ask-location':
@@ -99,7 +99,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
         case 'Ask-days':
             $message = "How about this class? \n\n 14590 - Swim Lessons: Private Swim Youth - 20pack - 30minute private lessons";
-            $return = [ 'fulfillmentMessages'=> json_decode($json), ];
+            $return = [ 'fulfillmentMessages'=> json_decode($json, true), ];
         break;
 
     }
