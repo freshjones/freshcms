@@ -60,7 +60,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $return = json_decode('{ 
+            $return = json_decode('[{ 
                 "fulfillmentText": "OK, Lets get started, what location do you use?", 
                 "data": {
                   "facebook": {
@@ -79,7 +79,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
                         ]
                     }
                 }
-            }');
+            }]');
         break;
 
         case 'Ask-location':
