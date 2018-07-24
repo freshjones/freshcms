@@ -58,11 +58,10 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     ]';
 
     $return = '';
-    $return = $quickreplyjson;
     switch($intent)
     {
         case 'Ask-findclass':
-            $return = json_decode($quickreplyjson);
+            $return = $quickreplyjson;
         break;
 
         case 'Ask-location':
