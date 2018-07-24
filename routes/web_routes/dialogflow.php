@@ -6,8 +6,8 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     //file_put_contents($file, print_r($request->all(),true) );
   
-    if(!$request->queryResult)
-        return;
+   // if(!$request->queryResult)
+      //  return;
 
     $intent = $request->queryResult['intent']['displayName'];
   
@@ -60,8 +60,26 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $message = 'OK, Lets get started, what location do you use?';
-            $return = [ 'fulfillmentText'=> $message, ];
+            $return = json_decode('{ 
+                "fulfillmentText": "OK, Lets get started, what location do you use?", 
+                "data": {
+                  "facebook": {
+                     "text": "Pick a location:",
+                     "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Red",
+                                "payload": "red"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "Green",
+                                "payload": "green"
+                            }
+                        ]
+                    }
+                }
+            }');
         break;
 
         case 'Ask-location':
