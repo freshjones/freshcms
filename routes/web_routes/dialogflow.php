@@ -18,11 +18,6 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     $message = 'Default message';
 
     $messages = array();
-
-    $quickreplyjson = [
-        "fulfillmentText" => "OK, Lets get started, what location do you use?"
-    ];
-
     $json = '[
         {
             "text": {
@@ -61,7 +56,9 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $return = $quickreplyjson;
+            $return = [
+                "fulfillmentText" => "OK, Lets get started, what location do you use?"
+            ];
         break;
 
         case 'Ask-location':
