@@ -19,26 +19,9 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $messages = array();
 
-    $quickreplyjson = '[{
-        "fulfillmentText": "OK, Lets get started, what location do you use?",
-        "data": {
-            "facebook": {
-                "text": "Pick a Location:",
-                "quick_replies": [
-                    {
-                       "content_type": "text",
-                       "title": "Middleboro",
-                       "payload": "Middleboro"
-                    },
-                    {
-                       "content_type": "text",
-                       "title": "E. Bridgewater",
-                       "payload": "east bridgewater"
-                    }
-                ]
-            }
-        }
-    }]';
+    $quickreplyjson = '{
+        "fulfillmentText": "OK, Lets get started, what location do you use?"
+    }';
 
     $json = '[
         {
