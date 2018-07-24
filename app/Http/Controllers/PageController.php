@@ -23,6 +23,7 @@ class PageController extends Controller
     {
         $this->repo = new PageRepository();
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('slugify', ['only' => ['store', 'update']]);
     }
 
     /**
@@ -69,19 +70,17 @@ class PageController extends Controller
     public function store(Request $request)
     {   
 
-        $slug = str_slug($request->slug);
-        
         $validatedData = $request->validate([
             'title' => 'required',
-            'slug' => ['required',Rule::unique('pages')->ignore($slug),],
+            'slug' => ['required','unique:pages',],
             'meta_description' => 'required',
         ]);
 
-        $page = Page::create(['slug' => $slug])
+        $page = Page::create(['slug' => $request->slug])
             ->contents()
             ->create(request(['lang','title','meta_description']));
         
-        return redirect($slug);
+        return redirect($request->slug);
 
     }
 
@@ -89,6 +88,9 @@ class PageController extends Controller
     {
         
         $page = $this->repo->getBySlug($slug);
+
+        if(!$page)
+            abort(404, "The page doesn't exist");
 
         if(empty($page->content))
             return view('admin.page.edit', ['page' => $page, 'contents' => array()]);
@@ -128,28 +130,28 @@ class PageController extends Controller
 
     public function update(Request $request, $slug)
     {
-
         $page = Page::where('slug',$slug)->first();
 
+        if(!$page)
+            abort(404, "The page doesn't exist");
+
         $validatedData = $request->validate([
-                'title' => 'required',
-                'slug' => [
-                    'required',
-                    Rule::unique('pages')->ignore($page->id),
-                ],
-                'meta_description' => 'required',
+            'title' => 'required',
+            'slug' => [
+                'required',
+                Rule::unique('pages')->ignore($page->id),
             ],
-            [
-                'slug.unique' => "That URL is taken please choose a unique URL",
-            ]);
+            'meta_description' => 'required',
+        ],
+        [
+            'slug.unique' => "That URL is taken please choose a unique URL",
+        ]);
 
-        $slug = str_slug($request->slug);
-
-        $page->update(['slug' => $slug]);
+        $page->update(['slug' => $request->slug]);
 
         $content = Content::where([['page_id',$page->id],['lang','en']])->update(request(['title','meta_description']));
 
-        return redirect($slug);
+        return redirect($request->slug);
         
     }
 

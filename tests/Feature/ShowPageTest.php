@@ -68,6 +68,14 @@ class ShowPageTest extends TestCase
     }
 
     /** @test */
+    public function a_non_existent_page_is_a_404()
+    { 
+        $this->withExceptionHandling();
+        $this->get("/non-existent-page")
+             ->assertStatus(404);
+    }
+
+    /** @test */
     public function a_pages_contents_is_sanitized()
     {  
 

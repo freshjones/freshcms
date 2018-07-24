@@ -26,7 +26,7 @@
           <span class="navbar-text mr-auto px-2 d-none d-lg-block">
             Navbar text with an inline element
           </span>
-        
+          
           @include('themes.default._nav')
         
         </div>
@@ -35,6 +35,7 @@
   </div>
 
   <div class="container">
+    <h1>Not Found</h1>
     <h2>{{ $exception->getMessage() }} </h2>
   </div>
 
