@@ -8,7 +8,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
   
     if(!$request->queryResult)
         return;
-    
+
     $intent = $request->queryResult['intent']['displayName'];
   
     $session = session($request->session, array());
@@ -60,7 +60,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $message = 'OK, Lets get started, what location do you use?';
+            $message = 'blah';
             $return = [ 'fulfillmentText'=> $message, ];
         break;
 
