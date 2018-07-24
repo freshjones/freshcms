@@ -2,9 +2,9 @@
 
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
-    $file = __DIR__ . '/../demo.txt';
+    //$file = __DIR__ . '/../demo.txt';
 
-    file_put_contents($file, print_r($request->all(),true) );
+    //file_put_contents($file, print_r($request->all(),true) );
   
     if(!$request->queryResult)
         return;
@@ -60,7 +60,7 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
     switch($intent)
     {
         case 'Ask-findclass':
-            $message = 'blah';
+            $message = 'OK, Lets get started, what location do you use?';
             $return = [ 'fulfillmentText'=> $message, ];
         break;
 
