@@ -2,12 +2,10 @@
 
 Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
-    //$file = __DIR__ . '/../demo.txt';
+    $file = __DIR__ . '/../demo.txt';
 
-    //file_put_contents($file, print_r($request->all(),true) );
-    
-    if(!$request->queryResult)
-        return;
+    file_put_contents($file, print_r($request->all(),true) );
+  
 
     $intent = $request->queryResult['intent']['displayName'];
   
@@ -21,9 +19,26 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     $messages = array();
 
-    $quickreplyjson = '[
-        "fulfillmentText": "OK, Lets get started, what location do you use?"
-    ]';
+    $quickreplyjson = '{
+        "fulfillmentText": "OK, Lets get started, what location do you use?",
+        "data": {
+            "facebook": {
+                "text": "Pick a Location:",
+                "quick_replies": [
+                    {
+                       "content_type": "text",
+                       "title": "Middleboro",
+                       "payload": "Middleboro"
+                    },
+                    {
+                       "content_type": "text",
+                       "title": "E. Bridgewater",
+                       "payload": "east bridgewater"
+                    }
+                ]
+            }
+        }
+    }';
 
     $json = '[
         {
@@ -59,12 +74,10 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
         }
     ]';
 
-    $return = '';
     switch($intent)
     {
         case 'Ask-findclass':
-            $message = 'blah';
-            $return = [ 'fulfillmentText'=> $message, ];
+            $return = json_decode($quickreplyjson);
         break;
 
         case 'Ask-location':
