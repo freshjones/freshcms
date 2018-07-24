@@ -68,13 +68,13 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
                      "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Red",
-                                "payload": "red"
+                                "title": "Middleboro",
+                                "payload": "Middleboro"
                             },
                             {
                                 "content_type": "text",
-                                "title": "Green",
-                                "payload": "green"
+                                "title": "Bridgewater",
+                                "payload": "East Bridgewater"
                             }
                         ]
                     }
