@@ -6,7 +6,9 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
 
     file_put_contents($file, print_r($request->all(),true) );
   
-
+    if(!$request->queryResult)
+        return;
+    
     $intent = $request->queryResult['intent']['displayName'];
   
     $session = session($request->session, array());
@@ -52,6 +54,8 @@ Route::post('/dialogflow/demo', function(\Illuminate\Http\Request $request){
             }
         }
     ]';
+    
+    $return = '';
 
     switch($intent)
     {
