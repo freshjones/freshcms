@@ -18,6 +18,10 @@ class ShowPageTest extends TestCase
 
         $page = factory('App\Page')->create();
 
+        $page->contents()->delete();
+
+        $this->assertEquals(0,$page->contents()->count());
+
         $this->get("/{$page->slug}")
             ->assertStatus(404);
 
@@ -79,7 +83,7 @@ class ShowPageTest extends TestCase
     public function a_pages_contents_is_sanitized()
     {  
 
-        $maliciousContent = serialize([[
+        $maliciousContent = [[
             'id' => 1,
             'type' => 'content',
             'label' => 'blah',
@@ -87,7 +91,7 @@ class ShowPageTest extends TestCase
             'display' => 1,
             'style' => 'default',
             'data' => ['description' => '<script>alert("Harmful Script");</script><a href="#" onClick="javascript:alert(\'boom\');" >Link</a><p>Test</p>'],
-        ]]);
+        ]];
 
         $pageContent = make('App\Content', ['content' => $maliciousContent]);
 

@@ -11,6 +11,9 @@ Route::post('/page', 'PageController@store')->name('page-store');
 Route::get('/page/{slug}/edit', 'PageController@edit')->name('page-edit');
 //DB Update
 Route::patch('/page/update/{slug}', 'PageController@update')->name('page-update');
+//DB Trash
+Route::delete('/page/{id}', 'PageDestroyController')->name('page.delete');
+
 
 //Home Route
 Route::get('/', 'PageController@index')->name('home');

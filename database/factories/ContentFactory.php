@@ -24,7 +24,7 @@ $factory->define(App\Content::class, function (Faker $faker) {
             'style' => 'default',
             'data' => ['description' => implode("\r\n", $generator->paragraphs)],
           ];
-          return serialize($content); 
+          return $content; 
         },
     ];
 });

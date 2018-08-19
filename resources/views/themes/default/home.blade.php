@@ -30,7 +30,7 @@
   </div>
   <div class="container">
     @foreach ($pages as $page)
-      <h2><a href="/{{ $page->slug }}">{{ $page->title }}</a></h2>
+      <h2><a href="/{{ $page->page->slug }}">{{ $page->title }}</a></h2>
       <p>{{ $page->meta_description }}</p>
     @endforeach
   </div>

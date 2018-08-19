@@ -17,6 +17,8 @@
           {{-- <li><a href="/settings/ip">IP Blocking</a></li> --}}
           {{-- onClick="event.preventDefault(); app.$refs.settings.toggle()" --}}
           <li><a href="{{ route('settings-configuration') }}" >Configuration</a></li>
+          <li><a href="{{ route('redirects-index') }}" >Redirects</a></li>
+          <li><a href="{{ route('trash.index') }}" >Trash</a></li>
           {{-- <li><a href="/settings/integrations">Integrations</a></li> --}}
           {{-- <li><a href="/settings/visitor-lookup">Visitor Lookup</a></li> --}}
           {{-- <li class="dropdown-header">Billing</li> --}}

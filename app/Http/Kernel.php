@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'slugify' => \App\Http\Middleware\SluggifyUrl::class,
+        'page.redirects' => \App\Http\Middleware\RedirectPages::class,
     ];
 }

@@ -51,9 +51,7 @@ class ShowHomeTest extends TestCase
 
         config(['settings.front' => $content->page->slug]);
 
-        $response = $this->get('/');
-
-        $response->assertSee('<title>' . $content->title);
+        $this->get('/')->assertSee('<title>' . $content->title);
     }
 
     /** @test */

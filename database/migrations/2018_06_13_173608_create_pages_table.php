@@ -17,6 +17,9 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->boolean('display')->default(1);
+            $table->timestamp('publish_at')->nullable();
+            $table->timestamp('unpublish_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -10,6 +10,8 @@
             {{-- <li class="nav-item"><a class="nav-link" href="/settings/ip">IP Blocking</a></li> --}}
             {{-- onClick="event.preventDefault(); app.$refs.settings.toggle()" --}}
             <li class="nav-item"><a class="nav-link" href="{{ route('settings-configuration') }}" >Configuration</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('redirects-index') }}" >Redirects</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('trash.index') }}" >Trash</a></li>
             {{-- <li class="nav-item"><a class="nav-link" href="/settings/integrations">Integrations</a></li> --}}
             {{-- <li class="nav-item"><a class="nav-link" href="/settings/visitor-lookup">Visitor Lookup</a></li> --}}
             {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"><span>Billing</span></h6> --}}

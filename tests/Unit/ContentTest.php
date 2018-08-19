@@ -20,4 +20,14 @@ class ContentTest extends TestCase
 
     }
 
+    /** @test */
+    public function content_has_revisions()
+    {
+    
+        $content = factory('App\Content')->create();
+        
+        $this->assertEquals(1, $content->revisions()->count());
+
+    }
+
 }

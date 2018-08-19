@@ -37,6 +37,8 @@ class PageRepository implements PageRepositoryInterface
                 'pages.id',
                 'pages.slug',
                 'pages.display',
+                'pages.publish_at',
+                'pages.unpublish_at',
                 'contents.lang',
                 'contents.title',
                 'contents.meta_description',
@@ -57,7 +59,11 @@ class PageRepository implements PageRepositoryInterface
 
     public function getBySlug($slug)
     {
-        return $this->getOne('pages.slug',$slug);
+        return Content::with(['page' => function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        }])->where('lang','en')->first();
+        
+        //$this->getOne('pages.slug',$slug);
     }
 
     public function all(){

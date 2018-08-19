@@ -31,16 +31,15 @@ class SectionController extends Controller
      */
     public function index($page_id)
     {
-        //load the page record
-        $page = $this->repo->getByID($page_id);
-        //return the contents
-        return unserialize($page->content);
+
+        return Content::where('page_id', $page_id)->where('lang','en')->pluck('content')->first();
+
     }
 
     public function sort($page_id, Request $request)
     {
         //update the sort order
-        Content::where([['page_id',$page_id],['lang','en']])->update(['content' => serialize( $request->all() ) ]);
+        Content::where([['page_id',$page_id],['lang','en']])->update(['content' => serialize($request->all()) ]);
         //return
         return ['message' => 'success'];   
     }

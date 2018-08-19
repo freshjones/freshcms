@@ -22,7 +22,7 @@ class ShowBillboardTest extends TestCase
     /** @test */
     public function a_page_shows_active_billboards()
     {   
-        $contents = create('App\Content', ['content' => serialize($this->billboardContent)]);
+        $contents = create('App\Content', ['content' => $this->billboardContent]);
         $response = $this->get("/{$contents->page->slug}");
         foreach($this->billboardContent[0]['data']['billboards'] as $billboard)
         {
